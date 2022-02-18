@@ -15,6 +15,7 @@ app.use(express.json());
 /* Usa as rotas do arquivo de rotas */
 app.use(routes);
 
+/* Middleware para tratamento de erros */
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   if (error instanceof AppError) {
     return res.status(error.statusCode).json({
