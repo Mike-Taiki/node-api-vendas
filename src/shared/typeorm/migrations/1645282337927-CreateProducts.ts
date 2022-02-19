@@ -2,6 +2,8 @@ import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class CreateProducts1645282337927 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
+    /**Cria a extensão uuid para que possa ser utilizada nas colunas que usam uuid */
+    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
     await queryRunner.createTable(
       new Table({
         name: 'products',
